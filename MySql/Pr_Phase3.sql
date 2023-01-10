@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `final_project`.`Profile` (
   `phone` VARCHAR(45) NULL,
   `gender` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
+  `city` VARCHAR(45) NULL,
   PRIMARY KEY (`pid`),
   INDEX `fk_Profile_Customer1_idx` (`Customer_cid` ASC) VISIBLE,
   CONSTRAINT `fk_Profile_Customer1`
@@ -89,6 +90,8 @@ CREATE TABLE IF NOT EXISTS `final_project`.`Product` (
   `discount_percent` INT NULL,
   `pruduce_date` DATE NULL,
   `expire_date` DATE NULL,
+  `price` DECIMAL(20) NULL,
+  `category` VARCHAR(45) NULL,
   PRIMARY KEY (`pid`))
 ENGINE = InnoDB;
 
@@ -159,6 +162,7 @@ CREATE TABLE IF NOT EXISTS `final_project`.`Suplier` (
   `sname` VARCHAR(45) NULL,
   `address` VARCHAR(45) NULL,
   `phone` VARCHAR(45) NULL,
+  `city` VARCHAR(45) NULL,
   PRIMARY KEY (`contract_num`))
 ENGINE = InnoDB;
 
@@ -170,6 +174,7 @@ CREATE TABLE IF NOT EXISTS `final_project`.`Product_has_Suplier` (
   `Product_pid` INT NOT NULL,
   `Suplier_contract_num` INT NOT NULL,
   `amount` DECIMAL(20) NULL,
+  `price` DECIMAL(20) NULL,
   PRIMARY KEY (`Product_pid`, `Suplier_contract_num`),
   INDEX `fk_Product_has_Suplier_Suplier1_idx` (`Suplier_contract_num` ASC) VISIBLE,
   INDEX `fk_Product_has_Suplier_Product1_idx` (`Product_pid` ASC) VISIBLE,
@@ -458,6 +463,7 @@ CREATE TABLE IF NOT EXISTS `final_project`.`CEO` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
