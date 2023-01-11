@@ -226,15 +226,8 @@ CREATE TABLE IF NOT EXISTS `final_project`.`Branch` (
   `baddress` VARCHAR(45) NULL,
   `city` VARCHAR(45) NULL,
   `phone` VARCHAR(45) NULL,
-  `managerid` INT NOT NULL,
   PRIMARY KEY (`bid`),
-  INDEX `fk_Branch_Employee1_idx` (`managerid` ASC) VISIBLE,
   INDEX `fk_Branch_Store1_idx` (`Store_brandname` ASC) VISIBLE,
-  CONSTRAINT `fk_Branch_Employee1`
-    FOREIGN KEY (`managerid`)
-    REFERENCES `final_project`.`Employee` (`eid`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Branch_Store1`
     FOREIGN KEY (`Store_brandname`)
     REFERENCES `final_project`.`Store` (`brandname`)
@@ -248,12 +241,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `final_project`.`Employee` (
   `eid` INT NOT NULL,
-  `Branch_bid` INT NOT NULL,
+  `Branch_bid` INT NULL,
   `ename` VARCHAR(45) NULL,
   `phone` VARCHAR(45) NULL,
   `address` VARCHAR(45) NULL,
   `salary` DECIMAL(20) NULL,
-  `Warehouse_wid` INT NOT NULL,
+  `Warehouse_wid` INT NULL,
   PRIMARY KEY (`eid`),
   INDEX `fk_Employee_Branch1_idx` (`Branch_bid` ASC) VISIBLE,
   INDEX `fk_Employee_Warehouse1_idx` (`Warehouse_wid` ASC) VISIBLE,

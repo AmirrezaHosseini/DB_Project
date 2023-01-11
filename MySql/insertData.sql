@@ -179,27 +179,27 @@ START TRANSACTION;
 INSERT INTO `final_project`.`store` (`brandname`) VALUES ('Apple'),('SumSung'),('Lenovo');
 COMMIT;
 
-/*START TRANSACTION;
-INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`, `managerid`) VALUES ('1', 'AppleB', 'Tehran,niavaran', 'Tehran', '98346', '1');
-INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`, `managerid`) VALUES ('2', 'AppleB', 'LA,kaland', 'LA', '9806', '2');
-INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`, `managerid`) VALUES ('3', 'SumSungB', 'Tehran,vakilesatn', 'Tehran', '5676', '3');
-INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`, `managerid`) VALUES ('4', 'LenovoB', 'Ahmadabad', 'Mashhhad', '12876', '4');
-INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`, `managerid`) VALUES ('5', 'SonyB', 'amjadyieh', 'Esfehan', '77876', '5');
-INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`, `managerid`) VALUES ('6', 'LGB', 'Azadi', 'Tabriz', '9096', '6');
-
-Foreign key Error
-COMMIT;
-*/
-/*
-Foreign key Error
 START TRANSACTION;
-INSERT INTO `final_project`.`employee` (`eid`, `Branch_bid`, `ename`, `phone`, `address`, `salary`, `Warehouse_wid`) VALUES ('981', '1', 'ahad', '934', 'mashhad', '900', '');
+INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`) VALUES ('1', 'Apple', 'Tehran,niavaran', 'Tehran', '98346');
+INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`) VALUES ('2', 'Apple', 'LA,kaland', 'LA', '9806');
+INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`) VALUES ('3', 'SumSung', 'Tehran','vakilesatn', 'Tehran');
+INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`) VALUES ('4', 'Lenovo', 'Ahmadabad', 'Mashhhad', '12876');
+INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`) VALUES ('5', 'SumSung', 'amjadyieh', 'Esfehan', '77876');
+INSERT INTO `final_project`.`branch` (`bid`, `Store_brandname`, `baddress`, `city`, `phone`) VALUES ('6', 'Lenovo', 'Azadi', 'Tabriz', '9096');
+
+-- Foreign key Error
+COMMIT;
+
+
+-- Foreign key Error
+START TRANSACTION;
+INSERT INTO `final_project`.`employee` (`eid`, `Branch_bid`, `ename`, `phone`, `address`, `salary`) VALUES ('1', '1', 'ahad', '934', 'mashhad', '900');
 
 COMMIT;
 
 START TRANSACTION;
-INSERT INTO `final_project`.`warehouse` (`wid`, `warehouse_keeper _id`, `waddress`, `wcapacity`) VALUES ('1', '1', 'iran', '');
+INSERT INTO `final_project`.`warehouse` (`wid`, `warehouse_keeper _id`, `waddress`, `wcapacity`) VALUES ('981', '1', 'iran', '');
 
 COMMIT;
-*/
+
 
