@@ -25,6 +25,7 @@ def login():
         cursor = mysql.connection.cursor()
         cursor.execute('select * from User where username=%s and password=%s', (username, password, ))
         user = cursor.fetchone()
+        cursor.close()
         if user:
             session['userid'] = user[0]
             session['username'] = user[1]
@@ -35,6 +36,20 @@ def login():
         return render_template('login.html')
 
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if 'username' in session:
+        return 'hey'
+    
+    if request.method == "POST":
+        username = request.form['username']
+        password = request.form['password']
+        cursor = mysql.connection.cursor()
+        cursor.execute("insert into User value(NULL,%s, %s)", (username, password,))
+        mysql.connection.commit()
+        return redirect('login')
+    else:
+        return render_template('register.html')
 
 
 
