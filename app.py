@@ -31,7 +31,8 @@ def login():
             session['username'] = user[1]
             return 'hey'
         else:
-            return redirect('login')
+            error = "username or password is invalid"
+            return render_template('login.html', error=error)
     else:
         return render_template('login.html')
 
@@ -51,7 +52,12 @@ def register():
     else:
         return render_template('register.html')
 
-
+@app.route('/logout')
+def logout():
+    if 'username' in session:
+        session.pop('username')
+        session.pop('userid')
+    return redirect('login')
 
 if __name__ == "__main__":
     app.run(debug=True)
