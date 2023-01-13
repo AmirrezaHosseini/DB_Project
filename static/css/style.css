@@ -2,64 +2,64 @@ body{
     background-color: steelblue;
 }
 
-form{
-    position: absolute;
-    width: 300px;
-    height: 350px;
-    background-color: white;
-    /* margin: auto; */
-    top: 25vh;
-    text-align: center;
-    border-radius: 25px;
-}
-div{
-    position: relative;
-    width: 300px;
-    margin: auto;
-    text-align: center;
-    padding: 0;
-    height: 100%;
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
 }
 
-input:not([type=submit]){
-    width: 200px;
-    padding: 10px 5px;
-    margin-top: 10%;
-    /* border-radius: 5px; */
-    border: none;
-    border-bottom: 2px solid steelblue;
-    background-color: white;
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form form {
+    margin-bottom: 10px;
+    padding: 50px 30px;
+    background-color: aliceblue;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.form form * {
+    margin-bottom: 20px;
+}
+
+.form form h3 {
+    color: rgb(0, 0, 0);
+    margin-bottom: 35px;
+}
+
+.form input {
+    width: 250px;
+    height: 50px;
+    background-color: transparent;
     outline: none;
-}
-input[placeholder=Username]{
-    margin-top: 3%;
-}
-
-h3{
-    /* display: block;
-    margin-top: 25%; */
-    padding-top: 10%;
-    margin-bottom: 25px;
-    color: blue;
-}
-
-input[type=submit]{
-    margin-top: 10%;
-    width: 50%;
-    padding: 10px 20px;
-    border-radius: 5px;
     border: none;
-    background-color: rgb(86, 86, 255);
-    color: white;
-    opacity: 0.8;
+    border-bottom: 1px solid royalblue;
+    border-radius: 5px;
 }
-input[type=submit]:hover{
+
+.form input[type=submit]{
+    background-color: royalblue;
+    opacity: 0.8;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    width: 30%;
+}
+
+
+.form input[type=submit]:hover {
     opacity: 1;
 }
 
-input[type=submit]:active{
-    background-color: blue;
-}
-span{
-    color: blue;
+
+a {
+    color: black;
+    font-size: 15px;
+    text-decoration: none;
+
 }

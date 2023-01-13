@@ -8,15 +8,18 @@
     <title>Log In</title>
 </head>
 <body>
-    <div>
-        <form action="/login" method="POST">
-            <h5 style="color: red;">{{ error }}</h4>
-            <h3>Login</h3>
-            <!-- <h3><span>Login</span> form</h3> -->
-            <input type="text" placeholder="Username" id="userName" name="username"><br>
-            <input type="password" placeholder="Password" id="passWord" name="password"><br>
-            <input type="submit" value="Login">
-        </form>
-    </div>
+    <main>
+        <div class="form">
+            <form action="/login" method="POST">
+                <h5 style="color: red;">{{ error }}</h4>
+                <h3>Login</h3>
+                <!-- <h3><span>Login</span> form</h3> -->
+                <input type="text" placeholder="Username" id="userName" name="username"><br>
+                <input type="password" placeholder="Password" id="passWord" name="password"><br>
+                <input type="submit" value="Login">
+            </form>
+            <a href="{{ url_for('register') }}">Don't have an Accout? Register Here</a>
+        </div>
+    </main>
 </body>
 </html>

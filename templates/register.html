@@ -5,17 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>Register</title>
+    <title>Log In</title>
 </head>
 <body>
-    <div>
-        <form action="/register" method="POST">
-            <h3>Register</h3>
-            <!-- <h3><span>Login</span> form</h3> -->
-            <input type="text" placeholder="Username" id="userName" name="username"><br>
-            <input type="password" placeholder="Password" id="passWord" name="password"><br>
-            <input type="submit" value="Login">
-        </form>
-    </div>
+    <main>
+        <div class="form">
+            <form action="/register" method="POST">
+                <h5 style="color: red;">{{ error }}</h4>
+                <h3>Register</h3>
+                <!-- <h3><span>Login</span> form</h3> -->
+                <input type="text" placeholder="Username" id="userName" name="username"><br>
+                <input type="password" placeholder="Password" id="passWord" name="password"><br>
+                <input type="submit" value="Register">
+            </form>
+            <a href="{{ url_for('login') }}">Have an Accout? Login Here</a>
+        </div>
+    </main>
 </body>
 </html>
