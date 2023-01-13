@@ -46,6 +46,11 @@ def register():
         username = request.form['username']
         password = request.form['password']
         cursor = mysql.connection.cursor()
+        cursor.execute('select * from User where username=%s;', (username,))
+        user = cursor.fetchone()
+        if user:
+            error = "username exists"
+            return render_template('register.html', error=error)
         cursor.execute("insert into User value(NULL,%s, %s)", (username, password,))
         mysql.connection.commit()
         return redirect('login')
