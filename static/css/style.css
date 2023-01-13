@@ -53,7 +53,7 @@ input[type=submit]{
     color: white;
     opacity: 0.8;
 }
-input[type=sybmit]:hover{
+input[type=submit]:hover{
     opacity: 1;
 }
 

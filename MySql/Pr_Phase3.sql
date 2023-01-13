@@ -24,6 +24,13 @@ CREATE TABLE IF NOT EXISTS `final_project`.`Customer` (
 ENGINE = InnoDB;
 
 
+CREATE TABLE IF NOT EXISTS `final_project`.`User` (
+  `uid` INT NOT NULL,
+  `username` VARCHAR(45) not NULL,
+  password varchar(45) not null,
+  PRIMARY KEY (`cid`))
+ENGINE = InnoDB;
+
 -- -----------------------------------------------------
 -- Table `final_project`.`Profile`
 -- -----------------------------------------------------

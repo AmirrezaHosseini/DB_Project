@@ -2,7 +2,7 @@ use final_project;
 
 SELECT * FROM product;
 
-SELECT * FROM customer , profile where cid = Customer_cid ;
+SELECT * FROM Customer , Profile where cid = Customer_cid ;
 
 SELECT DISTINCT category FROM product ;
 

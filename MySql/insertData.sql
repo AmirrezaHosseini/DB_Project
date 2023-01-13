@@ -117,25 +117,25 @@ INSERT INTO `final_project`.`Cart_has_Product` (`Cart_Cartid`, `Product_pid`, `a
 COMMIT;
 
 START TRANSACTION;
-INSERT INTO `final_project`.`Discountcode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('1', '5', '2022/12/30');
-INSERT INTO `final_project`.`Discountcode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('2', '10', '2022/12/30');
-INSERT INTO `final_project`.`Discountcode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('3', '15', '2022/12/30');
-INSERT INTO `final_project`.`Discountcode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('4', '20', '2022/12/30');
-INSERT INTO `final_project`.`Discountcode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('5', '25', '2022/12/30');
-INSERT INTO `final_project`.`Discountcode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('6', '30', '2022/12/30');
-INSERT INTO `final_project`.`Discountcode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('7', '35', '2022/12/30');
-INSERT INTO `final_project`.`Discountcode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('9', '40', '2022/12/30');
-INSERT INTO `final_project`.`Discountcode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('10', '45', '2022/12/30');
+INSERT INTO `final_project`.`DiscountCode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('1', '5', '2022/12/30');
+INSERT INTO `final_project`.`DiscountCode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('2', '10', '2022/12/30');
+INSERT INTO `final_project`.`DiscountCode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('3', '15', '2022/12/30');
+INSERT INTO `final_project`.`DiscountCode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('4', '20', '2022/12/30');
+INSERT INTO `final_project`.`DiscountCode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('5', '25', '2022/12/30');
+INSERT INTO `final_project`.`DiscountCode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('6', '30', '2022/12/30');
+INSERT INTO `final_project`.`DiscountCode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('7', '35', '2022/12/30');
+INSERT INTO `final_project`.`DiscountCode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('9', '40', '2022/12/30');
+INSERT INTO `final_project`.`DiscountCode` (`discount_code`, `discount_percent`, `expire_date`) VALUES ('10', '45', '2022/12/30');
 
 COMMIT;
 
 START TRANSACTION;
-INSERT INTO `final_project`.`Customer_has_Discountcode` (`Customer_cid`, `Discountcode_discount_code`) VALUES ('1', '2');
-INSERT INTO `final_project`.`Customer_has_Discountcode` (`Customer_cid`, `Discountcode_discount_code`) VALUES ('2', '1');
-INSERT INTO `final_project`.`Customer_has_Discountcode` (`Customer_cid`, `Discountcode_discount_code`) VALUES ('3', '5');
-INSERT INTO `final_project`.`Customer_has_Discountcode` (`Customer_cid`, `Discountcode_discount_code`) VALUES ('4', '6');
-INSERT INTO `final_project`.`Customer_has_Discountcode` (`Customer_cid`, `Discountcode_discount_code`) VALUES ('9', '10');
-INSERT INTO `final_project`.`Customer_has_Discountcode` (`Customer_cid`, `Discountcode_discount_code`) VALUES ('7', '4');
+INSERT INTO `final_project`.`Customer_has_DiscountCode` (`Customer_cid`, `DiscountCode_discount_code`) VALUES ('1', '2');
+INSERT INTO `final_project`.`Customer_has_DiscountCode` (`Customer_cid`, `DiscountCode_discount_code`) VALUES ('2', '1');
+INSERT INTO `final_project`.`Customer_has_DiscountCode` (`Customer_cid`, `DiscountCode_discount_code`) VALUES ('3', '5');
+INSERT INTO `final_project`.`Customer_has_DiscountCode` (`Customer_cid`, `DiscountCode_discount_code`) VALUES ('4', '6');
+INSERT INTO `final_project`.`Customer_has_DiscountCode` (`Customer_cid`, `DiscountCode_discount_code`) VALUES ('9', '10');
+INSERT INTO `final_project`.`Customer_has_DiscountCode` (`Customer_cid`, `DiscountCode_discount_code`) VALUES ('7', '4');
 
 
 COMMIT;
@@ -172,22 +172,22 @@ INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contr
 COMMIT;
 
 START TRANSACTION;
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('1', '2022/12/8', '90');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('2', '2022/11/8', '990');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('3', '2022/10/8', '1090');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('4', '2022/12/8', '890');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('5', '2022/12/8', '1190');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('6', '2022/12/8', '590');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('7', '2022/12/8', '850');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('8', '2022/12/8', '200');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('9', '2022/12/8', '790');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('10', '2022/12/8', '860');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('11', '2022/12/8', '90');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('12', '2022/12/8', '1300');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('13', '2022/12/8', '780');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('14', '2022/12/8', '1450');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('15', '2022/12/8', '160');
-INSERT INTO `final_project`.`Pricehistory` (`Product_pid`, `date`, `price`) VALUES ('16', '2022/12/8', '690');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('1', '2022/12/8', '90');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('2', '2022/11/8', '990');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('3', '2022/10/8', '1090');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('4', '2022/12/8', '890');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('5', '2022/12/8', '1190');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('6', '2022/12/8', '590');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('7', '2022/12/8', '850');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('8', '2022/12/8', '200');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('9', '2022/12/8', '790');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('10', '2022/12/8', '860');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('11', '2022/12/8', '90');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('12', '2022/12/8', '1300');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('13', '2022/12/8', '780');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('14', '2022/12/8', '1450');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('15', '2022/12/8', '160');
+INSERT INTO `final_project`.`PriceHistory` (`Product_pid`, `date`, `price`) VALUES ('16', '2022/12/8', '690');
 
 COMMIT;
 
