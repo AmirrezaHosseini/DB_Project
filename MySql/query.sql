@@ -6,7 +6,7 @@ SELECT * FROM Customer , Profile where cid = Customer_cid ;
 
 SELECT DISTINCT category FROM product ;
 
-SELECT * FROM cart WHERE Customer_cid = 1 ;
+SELECT * FROM Cart, Cart_has_Product, Product;
 
 SELECT * FROM customer , cart , invoice inv 
 where month(date) = 1 and cid = Customer_cid

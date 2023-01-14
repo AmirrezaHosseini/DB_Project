@@ -93,6 +93,23 @@ def query(qid):
         res = []
         for data in datas:
             res.append(dict(zip(row, data)))
+    elif qid == 3:
+        pass
+    elif qid == 4:
+        # SELECT * FROM Cart, Cart_has_Product, Product;
+        cursor.execute("""SHOW COLUMNS FROM Cart;""")
+        row = cursor.fetchall()
+        cursor.execute("""SHOW COLUMNS FROM Cart_has_Product;""")
+        row2 = cursor.fetchall()
+        cursor.execute("""SHOW COLUMNS FROM Product;""")
+        row3 = cursor.fetchall()
+        row = row + row2 + row3
+        cursor.execute("SELECT * FROM Cart, Cart_has_Product, Product where cartid=Cart_cartid and pid=Product_pid;")
+        datas = cursor.fetchall()
+        row = [r[0] for r in row]
+        res = []
+        for data in datas:
+            res.append(dict(zip(row, data)))
     
     return jsonify({"data": res})
 
