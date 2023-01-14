@@ -18,7 +18,7 @@ def home():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     if 'username' in session:
-        return "hey"
+        return "welcome " + session['username']
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -36,11 +36,27 @@ def login():
     else:
         return render_template('login.html')
 
+@app.route('/login/<string:username>/<string:password>', methods=["GET", "POST"])
+def login2(username, password):
+    if 'username' in session:
+        return "welcome " + session['username']
+    cursor = mysql.connection.cursor()
+    cursor.execute('select * from User where username=%s and password=%s', (username, password, ))
+    user = cursor.fetchone()
+    cursor.close()
+    if user:
+        session['userid'] = user[0]
+        session['username'] = user[1]
+        return "welcome " + session['username']
+    else:
+        error = "username or password is invalid"
+        return error
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if 'username' in session:
-        return 'hey'
+        return "welcome " + session['username']
     
     if request.method == "POST":
         username = request.form['username']
@@ -57,6 +73,21 @@ def register():
         return redirect('login')
     else:
         return render_template('register.html')
+
+@app.route('/register/<string:username>/<string:password>', methods=['POST'])
+def register2(username, password):
+    if 'username' in session:
+        return "welcome " + session['username']
+    cursor = mysql.connection.cursor()
+    cursor.execute('select * from User where username=%s;', (username,))
+    user = cursor.fetchone()
+    if user:
+        error = "username exists"
+        return "username exists"
+    cursor.execute("insert into User value(NULL,%s, %s, NULL)", (username, password,))
+    mysql.connection.commit()
+    cursor.close()
+    return "registered"
 
 @app.route('/logout')
 def logout():
