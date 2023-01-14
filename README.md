@@ -60,7 +60,7 @@ A Simple Example
 
 ## mysql
 
-<img align="right" height="150" src=".mysql-logo.jpeg">
+<img align="right" height="150" src="MySQL-Logo.jpg">
 
 ====
 
