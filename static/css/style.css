@@ -45,7 +45,7 @@ main {
     outline: none;
     border: none;
     border-bottom: 1px solid royalblue;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
 
 .form input[type=submit]{

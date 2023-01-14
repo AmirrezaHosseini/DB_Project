@@ -14,8 +14,8 @@
                 <h5 style="color: red;" class="error">{{ error }}</h4>
                 <h3>Login</h3>
                 <!-- <h3><span>Login</span> form</h3> -->
-                <input type="text" placeholder="Username" id="userName" name="username"><br>
-                <input type="password" placeholder="Password" id="passWord" name="password"><br>
+                <input type="text" placeholder="Username" id="userName" name="username" required><br>
+                <input type="password" placeholder="Password" id="passWord" name="password" required><br>
                 <input type="submit" value="Login">
             </form>
             <a href="{{ url_for('register') }}">Don't have an Accout? Register Here</a>

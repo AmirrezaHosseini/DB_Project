@@ -53,6 +53,7 @@ def register():
             return render_template('register.html', error=error)
         cursor.execute("insert into User value(NULL,%s, %s)", (username, password,))
         mysql.connection.commit()
+        cursor.close()
         return redirect('login')
     else:
         return render_template('register.html')
@@ -63,6 +64,39 @@ def logout():
         session.pop('username')
         session.pop('userid')
     return redirect('login')
+
+
+
+
+@app.route('/query<int:qid>', methods=['GET'])
+def query(qid):
+    cursor = mysql.connection.cursor()
+    res = None
+    if qid == 1:
+        cursor.execute("""SHOW COLUMNS FROM Product;""")
+        row = cursor.fetchall()
+        cursor.execute("SELECT * FROM Product;")
+        datas = cursor.fetchall()
+        row = [r[0] for r in row]
+        res = []
+        for data in datas:
+            res.append(dict(zip(row, data)))
+    elif qid == 2:
+        cursor.execute("""SHOW COLUMNS FROM Customer;""")
+        row = cursor.fetchall()
+        cursor.execute("""SHOW COLUMNS FROM Profile;""")
+        row2 = cursor.fetchall()
+        row = row + row2
+        cursor.execute("SELECT * FROM Customer, Profile where cid=Customer_cid;")
+        datas = cursor.fetchall()
+        row = [r[0] for r in row]
+        res = []
+        for data in datas:
+            res.append(dict(zip(row, data)))
+    
+    return jsonify({"data": res})
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
