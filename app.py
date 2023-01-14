@@ -127,7 +127,7 @@ def query(qid=0):
     elif qid == 3:
         cursor.execute("SELECT distinct category FROM Product;")
         datas = cursor.fetchall()
-        res = datas
+        res = [data[0] for data in datas]
     elif qid == 4:
         # SELECT * FROM Cart, Cart_has_Product, Product;
         cursor.execute("""SHOW COLUMNS FROM Cart;""")
