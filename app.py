@@ -74,7 +74,7 @@ def register():
     else:
         return render_template('register.html')
 
-@app.route('/register/<string:username>/<string:password>', methods=['POST'])
+@app.route('/register/<string:username>/<string:password>', methods=['GET'])
 def register2(username, password):
     if 'username' in session:
         return "welcome " + session['username']
@@ -171,11 +171,17 @@ def item(item):
 
     
     cursor = mysql.connection.cursor()
-    cursor.execute(f"""SELECT contract_num, sname FROM Suplier , Product, Product_has_Suplier
+    cursor.execute(f"""SELECT * FROM Suplier , Product, Product_has_Suplier
     where pid = Product_pid and contract_num = Suplier_contract_num and pname like '%{item}%';""")
     datas = cursor.fetchall()
     cursor.execute("""SHOW COLUMNS FROM Suplier;""")
-    row = [r[0] for r in cursor.fetchall()]
+    row = cursor.fetchall()
+    cursor.execute("""SHOW COLUMNS FROM Product;""")
+    row1 = cursor.fetchall()
+    cursor.execute("""SHOW COLUMNS FROM Product_has_Suplier;""")
+    row2 = cursor.fetchall()
+    row = row + row1 + row2
+    row = [r[0] for r in row]
     res = []
     for data in datas:
         res.append(dict(zip(row, data)))
