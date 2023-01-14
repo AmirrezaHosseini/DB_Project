@@ -60,8 +60,10 @@ A Simple Example
 
 ## mysql
 
-<img align="right" height="150" src="./img/mysql-logo.png">
+<img align="right" height="150" src=".mysql-logo.jpeg">
+
 ====
+
 [![Build Status - Master](https://travis-ci.org/major/MySQLTuner-perl.svg?branch=master)](https://travis-ci.org/major/MySQLTuner-perl)
 [![Project Status](http://opensource.box.com/badges/active.svg)](http://opensource.box.com/badges)
 [![Project Status](http://opensource.box.com/badges/maintenance.svg)](http://opensource.box.com/badges)
