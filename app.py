@@ -67,7 +67,7 @@ def register():
         if user:
             error = "username exists"
             return render_template('register.html', error=error)
-        cursor.execute("insert into User value(NULL,%s, %s)", (username, password,))
+        cursor.execute("insert into User value(NULL,%s, %s, 0)", (username, password,))
         mysql.connection.commit()
         cursor.close()
         return redirect('login')
@@ -166,11 +166,13 @@ def item(item):
     else:
         cursor = mysql.connection.cursor()
         cursor.execute('select * from User where username=%s and isAdmin=1;', (session['username'],))
+        if not cursor.fetchone():
+            return 'sorry only admin is allowed'
 
     
     cursor = mysql.connection.cursor()
-    cursor.execute("""SELECT contract_num, sname FROM Suplier , Product, Product_has_Suplier
-    where pid = Product_pid and contract_num = Suplier_contract_num and pname=%s;""", (item,))
+    cursor.execute(f"""SELECT contract_num, sname FROM Suplier , Product, Product_has_Suplier
+    where pid = Product_pid and contract_num = Suplier_contract_num and pname like '%{item}%';""")
     datas = cursor.fetchall()
     cursor.execute("""SHOW COLUMNS FROM Suplier;""")
     row = [r[0] for r in cursor.fetchall()]
