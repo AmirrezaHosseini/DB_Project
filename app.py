@@ -29,7 +29,7 @@ def login():
         if user:
             session['userid'] = user[0]
             session['username'] = user[1]
-            return 'hey'
+            return "welcome " + session['username']
         else:
             error = "username or password is invalid"
             return render_template('login.html', error=error)
@@ -68,8 +68,8 @@ def logout():
 
 
 
-@app.route('/query<int:qid>', methods=['GET'])
-def query(qid):
+@app.route('/query/<int:qid>', methods=['GET'])
+def query(qid=0):
     cursor = mysql.connection.cursor()
     res = None
     if qid == 1:
@@ -110,9 +110,43 @@ def query(qid):
         res = []
         for data in datas:
             res.append(dict(zip(row, data)))
-    
+    elif qid == 5:
+        pass
+    elif qid == 6:
+        pass
+    elif qid == 7:
+        cursor.execute("""SHOW COLUMNS FROM Product;""")
+        row = cursor.fetchall()
+        cursor.execute("SELECT * FROM Product where discount_percent>=15;")
+        datas = cursor.fetchall()
+        row = [r[0] for r in row]
+        res = []
+        for data in datas:
+            res.append(dict(zip(row, data)))
+
+    cursor.close()
     return jsonify({"data": res})
 
+
+@app.route('/item/<string:item>')
+def item(item):
+    if not 'username' in session:
+        return redirect(url_for('login'))
+    else:
+        cursor = mysql.connection.cursor()
+        cursor.execute('select * from User where username=%s and isAdmin=1;', (session['username'],))
+
+    
+    cursor = mysql.connection.cursor()
+    cursor.execute("""SELECT contract_num, sname FROM Suplier , Product, Product_has_Suplier
+    where pid = Product_pid and contract_num = Suplier_contract_num and pname=%s;""", (item,))
+    datas = cursor.fetchall()
+    cursor.execute("""SHOW COLUMNS FROM Suplier;""")
+    row = [r[0] for r in cursor.fetchall()]
+    res = []
+    for data in datas:
+        res.append(dict(zip(row, data)))
+    return jsonify({"data": res})
 
 
 if __name__ == "__main__":

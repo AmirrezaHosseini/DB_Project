@@ -76,21 +76,21 @@ COMMIT;
 
 START TRANSACTION;
 INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('1', 'panel', '120', '15', '2022/10/9', '2023/10/9');
-INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('2', 'Iphone 12', '12', '0', '2021/10/9', '2023/10/9');
-INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('3', 'Iphone 12 pro', '15', '0', '2021/10/9', '2023/10/9');
+INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('2', 'Iphone12', '12', '0', '2021/10/9', '2023/10/9');
+INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('3', 'Iphone12 pro', '15', '0', '2021/10/9', '2023/10/9');
 INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('4', 'S22', '14', '15', '2022/6/9', '2023/10/9');
-INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('5', 'S22 Ultra', '10', '10', '2022/6/9', '2023/10/9');
+INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('5', 'S22Ultra', '10', '10', '2022/6/9', '2023/10/9');
 INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('6', 'LCD', '26', '25', '2020/10/9', '2023/10/9');
 INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('7', 'LED', '68', '20', '2022/4/9', '2023/10/9');
 INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('8', 'Printer', '31', '35', '2021/7/9', '2023/10/9');
-INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('9', 'Ideapad 340v', '12', '15', '2022/2/9', '2023/10/9');
-INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('10', 'Ideapad 380v', '17', '15', '2022/3/9', '2023/10/9');
+INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('9', 'Ideapad340v', '12', '15', '2022/2/9', '2023/10/9');
+INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('10', 'Ideapad380v', '17', '15', '2022/3/9', '2023/10/9');
 INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('11', 'Mathmathical Calculator', '84', '40', '2020/8/9', '2023/10/9');
-INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('12', 'Macbook pro', '15', '10', '2022/7/9', '2023/10/9');
-INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('13', 'Macbook Air', '23', '18', '2022/6/9', '2023/10/9');
-INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('14', 'IMac 2022', '7', '0', '2022/3/9', '2023/10/9');
+INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('12', 'Macbookpro', '15', '10', '2022/7/9', '2023/10/9');
+INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('13', 'MacbookAir', '23', '18', '2022/6/9', '2023/10/9');
+INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('14', 'IMac2022', '7', '0', '2022/3/9', '2023/10/9');
 INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('15', 'Keyboard', '42', '25', '2021/3/9', '2023/10/9');
-INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('16', 'Samrt Tv', '16', '30', '2022/2/9', '2023/10/9');
+INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`) VALUES ('16', 'SamrtTv', '16', '30', '2022/2/9', '2023/10/9');
 
 COMMIT;
 
