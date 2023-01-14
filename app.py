@@ -125,7 +125,9 @@ def query(qid=0):
         for data in datas:
             res.append(dict(zip(row, data)))
     elif qid == 3:
-        pass
+        cursor.execute("SELECT distinct category FROM Product;")
+        datas = cursor.fetchall()
+        res = datas
     elif qid == 4:
         # SELECT * FROM Cart, Cart_has_Product, Product;
         cursor.execute("""SHOW COLUMNS FROM Cart;""")
