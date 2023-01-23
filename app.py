@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "MOHAMMAD"
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'mohammad1380@'
+app.config['MYSQL_PASSWORD'] = '1254'
 app.config['MYSQL_DB'] = 'final_project'
 
 mysql = MySQL(app)
@@ -188,6 +188,22 @@ def item(item):
     for data in datas:
         res.append(dict(zip(row, data)))
     return jsonify({"data": res})
+
+
+
+@app.route('/suplier/<string:item>')
+def suplier(item):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SHOW COLUMNS FROM Suplier;")
+    row = cursor.fetchall()
+    row = [r[0] for r in row]
+    cursor.execute(f"""SELECT Suplier.* FROM product , suplier , product_has_suplier phs
+        where pid = Product_pid and contract_num = Suplier_contract_num and pname = '{item}' phs.price = min(phs.price);""")
+    datas = cursor.fetchall()
+    result = []
+    for data in datas:
+        result.append(dict(zip(row,data)))
+    return jsonify({"data": result})
 
 
 if __name__ == "__main__":

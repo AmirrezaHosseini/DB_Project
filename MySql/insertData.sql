@@ -151,23 +151,23 @@ INSERT INTO `final_project`.`Suplier` (`contract_num`, `sname`, `address`, `phon
 COMMIT;
 
 START TRANSACTION;
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('1', '7', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('2', '1', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('3', '1', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('14', '1', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('13', '1', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('12', '1', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('4', '2', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('5', '2', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('6', '2', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('16', '2', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('9', '3', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('10', '3', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('11', '3', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('9', '5', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('15', '5', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('6', '6', '120');
-INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`) VALUES ('7', '6', '120');
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('1', '7', '120', 20.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('2', '1', '120', 21.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('3', '1', '120', 80.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('14', '1', '120', 17.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('13', '1', '120', 40.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('12', '1', '120', 38.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('4', '2', '120', 29.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('5', '2', '120', 24.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('6', '2', '120', 61.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('16', '2', '120', 42.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('9', '3', '120', 35.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('10', '3', '120', 70.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('11', '3', '120', 10.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('9', '5', '120', 10.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('15', '5', '120', 60.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('6', '6', '120', 40.0);
+INSERT INTO `final_project`.`Product_has_Suplier` (`Product_pid`, `Suplier_contract_num`, `amount`, `price`) VALUES ('7', '6', '120', 30.0);
 
 COMMIT;
 
