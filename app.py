@@ -206,6 +206,27 @@ def suplier(item):
         result.append(dict(zip(row,data)))
     return jsonify({"data": result})
 
+@app.route('/order/<string:customer_name>')
+def order(customer_name):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SHOW COLUMNS FROM Customer;")
+    row = cursor.fetchall()
+    cursor.execute("SHOW COLUMNS FROM Cart;")
+    row += cursor.fetchall()
+    cursor.execute("SHOW COLUMNS FROM Invoice;")
+    row += cursor.fetchall()
+    row = [r[0] for r in row]
+    cursor.execute(f"""SELECT * FROM Customer , Cart , Invoice 
+                    where cid = Customer_cid and cartid = Cart_cartid and cname like '%{customer_name}%'
+                    order by invoice.date desc limit 10;""")
+    datas = cursor.fetchall()
+    result = []
+    for data in datas:
+        result.append(dict(zip(row ,data)))
+    
+    return jsonify({"data": result})
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
