@@ -12,8 +12,8 @@ SELECT * FROM customer , cart , invoice inv
 where month(date) = 1 and cid = Customer_cid
 order by inv.total_cost DESC LIMIT 10;
 
--- SELECT * FROM cart , product , cart_has_product
--- order by amount desc limit 10;
+SELECT * FROM Cart , Product , Cart_has_Product
+order by amount desc limit 10;
 
 SELECT * FROM product where discount_percent > 15 ;
 
@@ -42,6 +42,42 @@ where cid = Customer_cid and city = "Mashhad" ;
 
 SELECT sname FROM suplier
 where city = "Mashhad";
+
+
+use final_project;
+
+UPDATE `final_project`.`suplier`
+SET
+`city` = 'mashhad'
+WHERE `contract_num` = 1;
+UPDATE `final_project`.`suplier`
+SET
+`city` = 'mashhad'
+WHERE `contract_num` = 1;
+UPDATE `final_project`.`suplier`
+SET
+`city` = 'esfahan'
+WHERE `contract_num` = 2;
+UPDATE `final_project`.`suplier`
+SET
+`city` = 'qom'
+WHERE `contract_num` = 3;
+UPDATE `final_project`.`suplier`
+SET
+`city` = 'tehran'
+WHERE `contract_num` = 4;
+UPDATE `final_project`.`suplier`
+SET
+`city` = 'rasht'
+WHERE `contract_num` = 5;
+UPDATE `final_project`.`suplier`
+SET
+`city` = 'ahwaz'
+WHERE `contract_num` = 6;
+UPDATE `final_project`.`suplier`
+SET
+`city` = 'tehran'
+WHERE `contract_num` = 7;
 
 
 

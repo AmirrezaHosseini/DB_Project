@@ -226,6 +226,23 @@ def order(customer_name):
     
     return jsonify({"data": result})
 
+@app.route('/citysupliers/<string:city_name>')
+def citysupliers(city_name):
+    cursor = mysql.connection.cursor()
+    cursor.execute("SHOW COLUMNS FROM Suplier;")
+    row = cursor.fetchall()
+    row = [r[0] for r in row]
+    cursor.execute(f"""SELECT sname FROM Suplier
+                    where city like '%{city_name}%';""")
+
+    datas = cursor.fetchall()
+    result = []
+    for data in datas:
+        result.append(dict(zip(row ,data)))
+    
+    return jsonify({"data": result})
+
+
 
 
 if __name__ == "__main__":
