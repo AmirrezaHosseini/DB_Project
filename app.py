@@ -197,8 +197,9 @@ def suplier(item):
     cursor.execute("SHOW COLUMNS FROM Suplier;")
     row = cursor.fetchall()
     row = [r[0] for r in row]
-    cursor.execute(f"""SELECT Suplier.* FROM product , suplier , product_has_suplier phs
-        where pid = Product_pid and contract_num = Suplier_contract_num and pname = '{item}' phs.price = min(phs.price);""")
+    cursor.execute(f"""SELECT distinct Suplier.* FROM Product , Suplier , Product_has_Suplier phs
+        where pid = Product_pid and contract_num = Suplier_contract_num and pname like '%{item}%' 
+        and phs.price = (select min(price) from Product_has_Suplier where pid = Product_pid);""")
     datas = cursor.fetchall()
     result = []
     for data in datas:
