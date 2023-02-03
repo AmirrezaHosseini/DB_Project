@@ -310,6 +310,38 @@ def comment(opt):
 
     return jsonify({'data': res})
 
+@app.route('/user/<string:city>', methods=['GET'])
+
+def user(city):
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute(f"""select * 
+
+                    from User
+
+                    where city like '%{city}%';""")
+
+    users = cursor.fetchall()
+
+    cursor.execute('SHOW COLUMNS FROM User;')
+
+    row = cursor.fetchall()
+
+    row = [r[0] for r in row]
+
+
+
+    res = []
+
+    for user in users:
+
+        res.append(dict(zip(row, user)))
+
+    
+
+    return jsonify({'data': res})    
+
 
 
 
