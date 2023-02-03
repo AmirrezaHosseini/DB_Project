@@ -243,6 +243,73 @@ def citysupliers(city_name):
     
     return jsonify({"data": result})
 
+@app.route('/comment/<int:opt>', methods=['GET'])
+
+def comment(opt):
+
+    cursor = mysql.connection.cursor()
+
+
+
+    if opt == 0:
+
+        cursor.execute("""select pname, C.* 
+
+                        from Product P, Comment C
+
+                        where C.pid = P.pid;""")
+
+        comments = cursor.fetchall()
+
+    elif opt == 1:
+
+        cursor.execute("""select pname, C.* 
+
+                        from Product P, Comment C
+
+                        where C.pid = P.pid
+
+                        order by C.point desc
+
+                        limit 3;""")
+
+        comments = cursor.fetchall()
+
+    elif opt == 2:
+
+        cursor.execute("""select pname, C.* 
+
+                        from Product P, Comment C
+
+                        where C.pid = P.pid
+
+                        order by C.point asc
+
+                        limit 3;""")
+
+        comments = cursor.fetchall()
+
+    
+
+
+
+    row = ['product']
+
+    cursor.execute('SHOW COLUMNS FROM Comment;')
+
+    row1 = cursor.fetchall()
+
+    row1 = [r[0] for r in row1]
+
+    row = row + row1
+
+    res = []
+
+    for cmt in comments:
+         res.append(dict(zip(row, cmt)))
+
+    return jsonify({'data': res})
+
 
 
 
