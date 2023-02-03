@@ -61,13 +61,14 @@ def register():
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
+        city = request.form['city']
         cursor = mysql.connection.cursor()
         cursor.execute('select * from User where username=%s;', (username,))
         user = cursor.fetchone()
         if user:
             error = "username exists"
             return render_template('register.html', error=error)
-        cursor.execute("insert into User value(NULL,%s, %s, 0)", (username, password,))
+        cursor.execute("insert into User value(NULL,%s, %s, 0, %s)", (username, password, city,))
         mysql.connection.commit()
         cursor.close()
         return redirect('login')

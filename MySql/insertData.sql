@@ -1,4 +1,11 @@
 START TRANSACTION;
+insert into User(username, password, isAdmin, city)
+value ('Mohammad', 'Mohammad', 1, 'Mashhad');
+COMMIT;
+
+
+
+START TRANSACTION;
 INSERT INTO `final_project`.`Customer` (`cid`, `cname`) VALUES ('1', 'Amirreza');
 INSERT INTO `final_project`.`Customer` (`cid`, `cname`) VALUES ('2', 'reza');
 INSERT INTO `final_project`.`Customer` (`cid`, `cname`) VALUES ('3', 'mahdi');
@@ -92,6 +99,19 @@ INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `disc
 INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`, `price`, `category`) VALUES ('15', 'Keyboard', '42', '25', '2021/3/9', '2023/10/9','160','Keyboard');
 INSERT INTO `final_project`.`Product` (`pid`, `pname`, `available_amount`, `discount_percent`, `pruduce_date`, `expire_date`, `price`, `category`) VALUES ('16', 'SamrtTv', '16', '30', '2022/2/9', '2023/10/9','690','TV');
 
+COMMIT;
+
+
+
+START TRANSACTION;
+INSERT INTO `final_project`.`Comment` (`pid`, `content`, `point`) VALUES (1, 'it was greate', 10);
+INSERT INTO `final_project`.`Comment` (`pid`, `content`, `point`) VALUES (2, 'it was greate', 1);
+INSERT INTO `final_project`.`Comment` (`pid`, `content`, `point`) VALUES (5, 'it was greate', 5);
+INSERT INTO `final_project`.`Comment` (`pid`, `content`, `point`) VALUES (3, 'it was greate', 8);
+INSERT INTO `final_project`.`Comment` (`pid`, `content`, `point`) VALUES (7, 'it was greate', 5);
+INSERT INTO `final_project`.`Comment` (`pid`, `content`, `point`) VALUES (1, 'it was greate', 2);
+INSERT INTO `final_project`.`Comment` (`pid`, `content`, `point`) VALUES (8, 'it was greate', 6);
+INSERT INTO `final_project`.`Comment` (`pid`, `content`, `point`) VALUES (10, 'it was greate', 8);
 COMMIT;
 
 START TRANSACTION;
@@ -286,8 +306,50 @@ INSERT INTO `final_project`.`Transaction_history` (`id`, `date`, `value`, `Custo
 INSERT INTO `final_project`.`Transaction_history` (`id`, `date`, `value`, `Customer_cid`) VALUES ('5', '2022/12/27', '940', '5');
 INSERT INTO `final_project`.`Transaction_history` (`id`, `date`, `value`, `Customer_cid`) VALUES ('6', '2022/12/28', '840', '6');
 INSERT INTO `final_project`.`Transaction_history` (`id`, `date`, `value`, `Customer_cid`) VALUES ('7', '2022/12/27', '640', '7');
+INSERT INTO `final_project`.`Transaction_history` (`id`, `date`, `value`, `Customer_cid`) VALUES ('8', '2022/12/19', '350', '1');
 
 COMMIT;
 START TRANSACTION;
+UPDATE `final_project`.`Suplier`
+SET
+`city` = 'mashhad'
+WHERE `contract_num` = 1;
+UPDATE `final_project`.`Suplier`
+SET
+`city` = 'mashhad'
+WHERE `contract_num` = 1;
+UPDATE `final_project`.`Suplier`
+SET
+`city` = 'esfahan'
+WHERE `contract_num` = 2;
+UPDATE `final_project`.`Suplier`
+SET
+`city` = 'qom'
+WHERE `contract_num` = 3;
+UPDATE `final_project`.`Suplier`
+SET
+`city` = 'tehran'
+WHERE `contract_num` = 4;
+UPDATE `final_project`.`Suplier`
+SET
+`city` = 'rasht'
+WHERE `contract_num` = 5;
+UPDATE `final_project`.`Suplier`
+SET
+`city` = 'ahwaz'
+WHERE `contract_num` = 6;
+UPDATE `final_project`.`Suplier`
+SET
+`city` = 'tehran'
+WHERE `contract_num` = 7;
+COMMIT;
+
+
+START TRANSACTION;
+
+create view Purchase_per_week as
+select Customer_cid, week(date), sum(value) 
+from Transaction_history
+group by Customer_cid, week(date);
 
 COMMIT;

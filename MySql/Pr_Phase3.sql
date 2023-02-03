@@ -24,11 +24,13 @@ CREATE TABLE IF NOT EXISTS `final_project`.`Customer` (
 ENGINE = InnoDB;
 
 
+
 CREATE TABLE IF NOT EXISTS `final_project`.`User` (
   `uid` INT NOT NULL auto_increment,
   `username` VARCHAR(45) not NULL,
   password varchar(45) not null,
   isAdmin boolean null,
+  city varchar(100),
   PRIMARY KEY (`uid`))
 ENGINE = InnoDB;
 
@@ -465,6 +467,15 @@ CREATE TABLE IF NOT EXISTS `final_project`.`CEO` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+create table Comment(
+id integer auto_increment,
+pid integer,
+content varchar(1000),
+point integer,
+primary key(id, pid),
+foreign key(pid) references Product(pid)
+);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
