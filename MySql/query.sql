@@ -46,35 +46,35 @@ where city = "Mashhad";
 
 use final_project;
 
-UPDATE `final_project`.`suplier`
+UPDATE `final_project`.`Suplier`
 SET
 `city` = 'mashhad'
 WHERE `contract_num` = 1;
-UPDATE `final_project`.`suplier`
+UPDATE `final_project`.`Suplier`
 SET
 `city` = 'mashhad'
 WHERE `contract_num` = 1;
-UPDATE `final_project`.`suplier`
+UPDATE `final_project`.`Suplier`
 SET
 `city` = 'esfahan'
 WHERE `contract_num` = 2;
-UPDATE `final_project`.`suplier`
+UPDATE `final_project`.`Suplier`
 SET
 `city` = 'qom'
 WHERE `contract_num` = 3;
-UPDATE `final_project`.`suplier`
+UPDATE `final_project`.`Suplier`
 SET
 `city` = 'tehran'
 WHERE `contract_num` = 4;
-UPDATE `final_project`.`suplier`
+UPDATE `final_project`.`Suplier`
 SET
 `city` = 'rasht'
 WHERE `contract_num` = 5;
-UPDATE `final_project`.`suplier`
+UPDATE `final_project`.`Suplier`
 SET
 `city` = 'ahwaz'
 WHERE `contract_num` = 6;
-UPDATE `final_project`.`suplier`
+UPDATE `final_project`.`Suplier`
 SET
 `city` = 'tehran'
 WHERE `contract_num` = 7;
@@ -85,4 +85,35 @@ WHERE `contract_num` = 7;
 
 
 
+*******************************************************************
+-- all comments
+select pname, C.* 
+from Comment C, Product P
+where C.pid = P.pid;
 
+*******************
+-- top 3 most rated comments
+select pname, C.* 
+from Comment C, Product P
+where C.pid = P.pid
+order by C.point desc
+limit 3;
+*******************
+-- top 3 least rated comments
+select pname, C.* 
+from Comment C, Product P
+where C.pid = P.pid
+order by C.point ASC
+limit 3;
+*******************
+
+-- products sale
+select pname, amount 
+from Product p, Cart_has_Product chp, Cart c, Invoice i
+where i.Cart_cartid = c.cartid and chp.Cart_cartid = c.cartid and chp.Product_pid = p.pid and month(i.date) = 11;
+****************************
+-- users of a city
+select * 
+from User
+where city like '%Mashhad%';
+****************************

@@ -61,13 +61,14 @@ def register():
     if request.method == "POST":
         username = request.form['username']
         password = request.form['password']
+        city = request.form['city']
         cursor = mysql.connection.cursor()
         cursor.execute('select * from User where username=%s;', (username,))
         user = cursor.fetchone()
         if user:
             error = "username exists"
             return render_template('register.html', error=error)
-        cursor.execute("insert into User value(NULL,%s, %s, 0)", (username, password,))
+        cursor.execute("insert into User value(NULL,%s, %s, 0, %s)", (username, password, city,))
         mysql.connection.commit()
         cursor.close()
         return redirect('login')
@@ -241,6 +242,105 @@ def citysupliers(city_name):
         result.append(dict(zip(row ,data)))
     
     return jsonify({"data": result})
+
+@app.route('/comment/<int:opt>', methods=['GET'])
+
+def comment(opt):
+
+    cursor = mysql.connection.cursor()
+
+
+
+    if opt == 0:
+
+        cursor.execute("""select pname, C.* 
+
+                        from Product P, Comment C
+
+                        where C.pid = P.pid;""")
+
+        comments = cursor.fetchall()
+
+    elif opt == 1:
+
+        cursor.execute("""select pname, C.* 
+
+                        from Product P, Comment C
+
+                        where C.pid = P.pid
+
+                        order by C.point desc
+
+                        limit 3;""")
+
+        comments = cursor.fetchall()
+
+    elif opt == 2:
+
+        cursor.execute("""select pname, C.* 
+
+                        from Product P, Comment C
+
+                        where C.pid = P.pid
+
+                        order by C.point asc
+
+                        limit 3;""")
+
+        comments = cursor.fetchall()
+
+    
+
+
+
+    row = ['product']
+
+    cursor.execute('SHOW COLUMNS FROM Comment;')
+
+    row1 = cursor.fetchall()
+
+    row1 = [r[0] for r in row1]
+
+    row = row + row1
+
+    res = []
+
+    for cmt in comments:
+         res.append(dict(zip(row, cmt)))
+
+    return jsonify({'data': res})
+
+@app.route('/user/<string:city>', methods=['GET'])
+
+def user(city):
+
+    cursor = mysql.connection.cursor()
+
+    cursor.execute(f"""select * 
+
+                    from User
+
+                    where city like '%{city}%';""")
+
+    users = cursor.fetchall()
+
+    cursor.execute('SHOW COLUMNS FROM User;')
+
+    row = cursor.fetchall()
+
+    row = [r[0] for r in row]
+
+
+
+    res = []
+
+    for user in users:
+
+        res.append(dict(zip(row, user)))
+
+    
+
+    return jsonify({'data': res})    
 
 
 
