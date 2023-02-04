@@ -395,6 +395,58 @@ def sale(opt, val):
     return jsonify({'data': res})
 
 
+@app.route('/customer/<int:opt>/<int:val>', methods=['GET'])
+def customer(opt, val):
+    cursor = mysql.connection.cursor()
+    customers = None
+    if opt == 0:
+        cursor.execute(f"""select c.*, value_sum
+        from Customer c, Purchase_per_week ppw
+        where cid = ccid and week = {val}
+        order by value_sum desc
+        limit 10;""")
+        customers = cursor.fetchall()
+    elif opt == 1:
+        cursor.execute(f"""select c.*, value_sum
+        from Customer c, Purchase_per_month ppm
+        where cid = ccid and month = {val}
+        order by value_sum desc
+        limit 10;""")
+        customers = cursor.fetchall()
+    
+    cursor.execute('SHOW COLUMNS FROM Customer;')
+    row = cursor.fetchall()
+    row = [r[0] for r in row]
+    row = row + ['value_sum']
+    res = []
+    for ctm in customers:
+        res.append(dict(zip(row, ctm)))
+    
+    return jsonify({"data": res})
+
+
+
+@app.route('/monthSale', methods=['GET'])
+def monthSale():
+    if not 'username' in session:
+        return redirect(url_for('login'))
+    else:
+        cursor = mysql.connection.cursor()
+        cursor.execute('select * from User where username=%s and isAdmin=1;', (session['username'],))
+        if not cursor.fetchone():
+            return 'sorry only admin is allowed'
+    
+    cursor.execute("""select month(date) as month, avg(value)
+    from Transaction_history
+    group by month(date)
+    order by month(date) desc;""")
+    datas = cursor.fetchall()
+    row = ['month', 'average']
+    res = []
+    for data in datas:
+        res.append(dict(zip(row, data)))
+    
+    return jsonify({'data': res})
 
 if __name__ == "__main__":
     app.run(debug=True)
