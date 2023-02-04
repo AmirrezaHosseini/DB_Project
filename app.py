@@ -368,31 +368,6 @@ def adminProduct(pname, month):
     return jsonify({'data': res})
 
 
-@app.route("/sale/<int:opt>/<int:val>", methods=['GET'])
-def sale(opt, val):
-    cursor = mysql.connection.cursor()
-    products = None
-    if opt == 0:
-        cursor.execute(f"""select pname, amount 
-        from Product p, Cart_has_Product chp, Cart c, Invoice i
-        where i.Cart_cartid = c.cartid and chp.Cart_cartid = c.cartid and chp.Product_pid = p.pid and week(i.date) = {val}
-        order by amount desc
-        limit 10;""")
-        products = cursor.fetchall()
-    elif opt == 1:
-        cursor.execute(f"""select pname, amount 
-        from Product p, Cart_has_Product chp, Cart c, Invoice i
-        where i.Cart_cartid = c.cartid and chp.Cart_cartid = c.cartid and chp.Product_pid = p.pid and month(i.date) = {val}
-        order by amount desc
-        limit 10;""")
-        products = cursor.fetchall()
-    
-    res = []
-    for p in products:
-        res.append(dict(zip(['product', 'amount'], p)))
-    
-    return jsonify({'data': res})
-
 
 if __name__ == "__main__":
     app.run(debug=True)
