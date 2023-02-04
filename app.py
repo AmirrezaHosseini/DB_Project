@@ -245,5 +245,59 @@ def citysupliers(city_name):
 
 
 
+
+@app.route('/adminProduct/<string:pname>/<int:month>', methods=['GET'])
+def adminProduct(pname, month):
+    if not 'username' in session:
+        return redirect(url_for('login'))
+    else:
+        cursor = mysql.connection.cursor()
+        cursor.execute('select * from User where username=%s and isAdmin=1;', (session['username'],))
+        if not cursor.fetchone():
+            return 'sorry only admin is allowed'
+    
+    cursor.execute(f"""select pname, amount 
+        from Product p, Cart_has_Product chp, Cart c, Invoice i
+        where i.Cart_cartid = c.cartid and chp.Cart_cartid = c.cartid and chp.Product_pid = p.pid and month(i.date) = {month} and pname like '%{pname}%'
+        order by amount desc
+        limit 10;""")
+    products = cursor.fetchall()
+    
+    res = []
+    for p in products:
+        res.append(dict(zip(['product', 'amount'], p)))
+    
+    return jsonify({'data': res})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
