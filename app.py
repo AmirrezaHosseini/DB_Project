@@ -460,7 +460,10 @@ def panel():
     
     cursor.execute('Select uid, username from User  where isAdmin = 0;')
     users = cursor.fetchall()
-    return render_template('panel.html', users=users)
+
+    cursor.execute('Select pid, pname, price from Product;')
+    products = cursor.fetchall()
+    return render_template('panel.html', users=users, products=products)
 
 
 @app.route('/delete/<int:uid>', methods=['GET'])
@@ -485,6 +488,35 @@ def update(uid):
     mysql.connection.commit()
     return redirect('/panel')
     
+
+@app.route('/addproduct', methods=['POST'])
+def addproduct():
+    id = int(request.form['id'])
+    pname = request.form['pname']
+    price = float(request.form['price'])
+
+    cursor = mysql.connection.cursor()
+    cursor.execute(f"insert into Product(pid, pname, price) value ({id}, '{pname}', {price});")
+    mysql.connection.commit()
+    return redirect('/panel')
+
+
+@app.route('/deletep/<int:pid>', methods=['GET'])
+def deletep(pid):
+    cursor = mysql.connection.cursor()
+    cursor.execute(f"delete from Product where pid = {pid};")
+    mysql.connection.commit()
+    return redirect('/panel')
+
+
+@app.route('/updatep/<int:pid>', methods=['POST'])
+def updatep(pid):
+    pname = request.form['pname']
+    price = float(request.form['price'])
+    cursor = mysql.connection.cursor()
+    cursor.execute(f"update Product set pname = '{pname}', price = {price} where pid = {pid};")
+    mysql.connection.commit()
+    return redirect('/panel')
 
 if __name__ == "__main__":
     app.run(debug=True)
