@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "MOHAMMAD"
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '1254'
+app.config['MYSQL_PASSWORD'] = 'mohammad1380@'
 app.config['MYSQL_DB'] = 'final_project'
 
 mysql = MySQL(app)
@@ -447,6 +447,44 @@ def monthSale():
         res.append(dict(zip(row, data)))
     
     return jsonify({'data': res})
+
+@app.route('/panel', methods=['GET'])
+def panel():
+    if not 'username' in session:
+        return redirect(url_for('login'))
+    else:
+        cursor = mysql.connection.cursor()
+        cursor.execute('select * from User where username=%s and isAdmin=1;', (session['username'],))
+        if not cursor.fetchone():
+            return 'sorry only admin is allowed'
+    
+    cursor.execute('Select uid, username from User  where isAdmin = 0;')
+    users = cursor.fetchall()
+    return render_template('panel.html', users=users)
+
+
+@app.route('/delete/<int:uid>', methods=['GET'])
+def delete(uid):
+    cursor = mysql.connection.cursor()
+    cursor.execute(f"delete from User where uid = {uid};")
+    mysql.connection.commit()
+    return redirect('/panel')
+
+@app.route('/makeadmin/<int:uid>', methods=['GET'])
+def makeadmin(uid):
+    cursor = mysql.connection.cursor()
+    cursor.execute(f'update User set isAdmin = 1 where uid = {uid};')
+    mysql.connection.commit()
+    return redirect('/panel')
+
+@app.route('/update/<int:uid>', methods=['POST'])
+def update(uid):
+    newusername = request.form['newusername']
+    cursor = mysql.connection.cursor()
+    cursor.execute(f"update User set username = '{newusername}' where uid = {uid};")
+    mysql.connection.commit()
+    return redirect('/panel')
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
